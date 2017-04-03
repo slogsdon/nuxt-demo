@@ -1,0 +1,17 @@
+{
+  "name": "nuxt-demo",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt",
+    "generate": "nuxt generate",
+    "now": "now",
+    "start": "nuxt start"
+  },
+  "dependencies": {
+    "axios": "^0.16.0",
+    "nuxt": "^0.10.5"
+  },
+  "devDependencies": {
+    "now": "^4.10.3"
+  }
+}
