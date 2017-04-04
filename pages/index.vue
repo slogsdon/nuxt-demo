@@ -1,6 +1,5 @@
 <template>
-  <div>
+  <main>
     <h1>Hello World</h1>
-    <a href="/hello">Link</a>
-  </div>
+  </main>
 </template>

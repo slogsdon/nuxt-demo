@@ -1,5 +1,6 @@
 {
   "name": "nuxt-demo",
+  "license": "MIT",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt",
@@ -8,7 +9,10 @@
     "start": "nuxt start"
   },
   "dependencies": {
-    "axios": "^0.16.0",
+    "front-matter-loader": "^0.1.2",
+    "highlight.js": "^9.10.0",
+    "json-loader": "^0.5.4",
+    "marked": "^0.3.6",
     "nuxt": "^0.10.5"
   },
   "devDependencies": {

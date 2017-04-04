@@ -2,10 +2,22 @@ const fs = require('fs');
 
 module.exports = {
   build: {
-    vendor: ['axios']
+    loaders: [
+      {
+        test: /\.md$/,
+        loaders: [
+          'json-loader',
+          'front-matter-loader',
+        ],
+      },
+    ],
+    vendor: ['marked','highlight.js'],
   },
+  css: [
+    'highlight.js/styles/github.css',
+  ],
   generate: {
-    dir: 'docs',
+    dir: 'dist',
     routes: function (callback) {
       fs.readFile('./static/api/posts.json', function (err, data) {
         if (err) {
@@ -26,6 +38,9 @@ module.exports = {
 
         callback(null, routes);
       });
-    }
+    },
+  },
+  router: {
+    base: process.env.BASE_URL || '/'
   }
 };

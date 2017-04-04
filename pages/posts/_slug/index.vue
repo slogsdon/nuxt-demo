@@ -1,28 +1,32 @@
 <template>
-  <div>
-    <h1>{{ title.rendered }}</h1>
-    <p>{{ content.rendered }}</p>
-  </div>
+  <main>
+    <h1>{{ title }}</h1>
+    <section class="content" v-html="body"/>
+  </main>
 </template>
 
 <script>
-import posts from '~static/api/posts.json';
+import {
+  markdown,
+  getPosts,
+} from '~assets/lib/post-tools';
 
 export default {
   asyncData({ params, error }) {
-    const filteredPosts = posts
-      .filter((post) => post.slug === params.slug);
+    const posts =
+      getPosts()
+      .filter((p) => p.slug === params.slug);
 
-    if (filteredPosts.length !== 1) {
-      error({ message: `Error retrieving post ${params.slug}`, statusCode: 404 });
+    if (posts.length === 1) {
+      return posts[0];
     }
 
-    return filteredPosts[0];
+    error({ message: 'Post not found', statusCode: 404 });
   },
   head() {
     return {
-      title: 'Posts'
+      title: this.title
     };
-  }
+  },
 }
 </script>
